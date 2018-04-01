@@ -48,11 +48,11 @@ console.log('using es6 :-)');
 	//using forEach() method
 
 const average = (...args) => {
-	let sum1=0;
+	let sum=0;
 	args.forEach(arg  => {
-		sum1 += arg;
+		sum += arg;
 	});
-	return (`Średnia podanych liczb wynosi: ${sum1/args.length}`);
+	return (`Średnia podanych liczb wynosi: ${sum/args.length}`);
 };
 
 console.log(average(1,2,4));
@@ -82,16 +82,16 @@ console.log(averageReduce(1,2,3));
 	
 const average6 = (...args) => {	
 	console.log(args.length);	
-	let suma1 = 0;
+	let suma = 0;
 	let array=[].concat(args);
 	while(array.length){
 	console.log(`wartość array przed rpzpoczęciem pentli ${array}`);
-		suma1 += array[0];
+		suma += array[0];
 		array= array.slice(1);
 		console.log(`wartość array na końcu pentli ${args}`);
-		console.log(suma1);
+		console.log(suma);
 	}
-	return 	(`Średnia podanych liczb wynosi: ${suma1/args.length}`);
+	return 	(`Średnia podanych liczb wynosi: ${suma/args.length}`);
 };
 
 console.log(average6(1,2,3,4));
@@ -100,13 +100,13 @@ console.log(average6(1,2,3,4));
 
 const average7 = (...args) => {
    console.log(`Przed pętlą ${args}`);
-    let  suma2=0;
-    let array2 = [].concat(args);
-    console.log(`SUma2 przed pentlą ${suma2}`);
-   while(array2.length){
-     suma2 += array2.shift();  
+    let  suma=0;
+    let array = [].concat(args);
+    console.log(`Suma przed pentlą ${suma}`);
+   while(array.length){
+     suma += array.shift();  
    }
-   return suma2/args.length;
+   return suma/args.length;
 };
 
 console.log(average7(1,2,3,4));
