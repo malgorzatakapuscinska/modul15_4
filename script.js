@@ -17,7 +17,7 @@ addedStrings2();
 
 //TASK 2 - CREATE FUNCTION MULTIPLY MUTLIPLYING TWO VARIABLES. CONTIDTION IS IF USER DOESN'T PUT ONE OR TWO VERIABLES THEY SHOULD BE EQUAL 1 BY DEFAULT.
 
-const number1=0, number2=0;
+
 const multiply = (number1 = 1, number2 = 1) => number1 + number2;
 console.log(multiply(2));
 console.log(multiply(6,5));
@@ -28,19 +28,19 @@ console.log(multiply(6,5));
 
 	//using for loop
 	
-/*console.log('using es5');
+console.log('using es5');
 
 function average1() {
 var sum = 0;
 var average=0;
     for (var i=0; i < arguments.length; i++) {
         sum = sum +arguments[i];
-        average = sum/arguments.length;
     }
-    console.log(average);
+    average = sum/arguments.length;
+    return average;
 }
 
-average1(1, 2, 3);*/
+console.log(average1(1, 2, 3));
 
 //b) in es6
 console.log('using es6 :-)');
@@ -52,9 +52,10 @@ const average = (...args) => {
 	args.forEach(arg  => {
 		sum1 += arg;
 	});
-	console.log(`Średnia podanych liczb wynosi: ${sum1/args.length}`);
+	return (`Średnia podanych liczb wynosi: ${sum1/args.length}`);
 };
-average(1,2,4);
+
+console.log(average(1,2,4));
 
 	//using reduce() method
 
@@ -64,11 +65,53 @@ const average5 = (...args) => {
 	return suma + arg;
 	});
 
-return console.log(`Średnia podanych liczb wynosi: ${sum/args.length}`);
+return (`Średnia podanych liczb wynosi: ${sum/args.length}`);
 };
 
-average5(1,2,3,4);
+console.log(average5(1,2,3,4));
 
+// reduce shorter version
+console.log('reduce shorter version');
+
+const averageReduce = (...args) => args.reduce((suma, arg) => suma + arg)/args.length;
+
+console.log(averageReduce(1,2,3)); 
+
+
+	//using while loop and slice() method
+	
+const average6 = (...args) => {	
+	console.log(args.length);	
+	let suma1 = 0;
+	let array=[].concat(args);
+	while(array.length){
+	console.log(`wartość array przed rpzpoczęciem pentli ${array}`);
+		suma1 += array[0];
+		array= array.slice(1);
+		console.log(`wartość array na końcu pentli ${args}`);
+		console.log(suma1);
+	}
+	return 	(`Średnia podanych liczb wynosi: ${suma1/args.length}`);
+};
+
+console.log(average6(1,2,3,4));
+
+	// using while and shift() method
+
+const average7 = (...args) => {
+   console.log(`Przed pętlą ${args}`);
+    let  suma2=0;
+    let array2 = [].concat(args);
+    console.log(`SUma2 przed pentlą ${suma2}`);
+   while(array2.length){
+     suma2 += array2.shift();  
+   }
+   return suma2/args.length;
+};
+
+console.log(average7(1,2,3,4));
+
+	
 //TASK 4 CREATE AN ARRAY AND PUT THIS ARRAY AS PARAMETER OF AVERAGE FUNCTION. USE SPREAD OPERATOR.
 
 const grades = [1, 5, 5, 5, 4, 3, 3, 2, 1];
